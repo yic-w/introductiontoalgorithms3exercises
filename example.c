@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//ºê:½»»»Á½ÊıµÄÖµ¡£
+//å®:äº¤æ¢ä¸¤æ•°çš„å€¼ã€‚
 #define swap(a, b) {	\
 	a ^= b; 			\
 	b ^= a; 			\
@@ -10,9 +10,9 @@
 }
 
 /*
-	¹¦ÄÜ:Ö»ÅÅĞòÊı×é×îºóÒ»Î»
-	arr:Êı×é
-	length:Êı×é³¤¶È
+	åŠŸèƒ½:åªæ’åºæ•°ç»„æœ€åä¸€ä½
+	arr:æ•°ç»„
+	length:æ•°ç»„é•¿åº¦
 	*/
 int insert_sort_only_last(int *arr, int length){
 	if(length < 2) return -1;
@@ -31,10 +31,10 @@ int insert_sort_only_last(int *arr, int length){
 }
 
 /*
-	Ëã·¨µ¼ÂÛÏ°Ìâ2.3-4
-	µİ¹é²åÈëÅÅĞò
-	arr:Êı×é
-	length:Êı×é³¤¶È
+	ç®—æ³•å¯¼è®ºä¹ é¢˜2.3-4
+	é€’å½’æ’å…¥æ’åº
+	arr:æ•°ç»„
+	length:æ•°ç»„é•¿åº¦
 	*/
 int recursive_insert_sort(int *arr, int length){
 	if(length <= 1) return -1;
@@ -45,60 +45,60 @@ int recursive_insert_sort(int *arr, int length){
 	return 0;
 }
 
-//Ëã·¨µ¼ÂÛÏ°Ìâ2.2-2£¬Ñ¡ÔñÅÅĞòËã·¨
+//ç®—æ³•å¯¼è®ºä¹ é¢˜2.2-2ï¼Œé€‰æ‹©æ’åºç®—æ³•
 int select_sort(int *arr, int length){
 	int i = 0, j = 0;
 	int key = 0;
-	//Ñ­»·£¬0 to length -1 
+	//å¾ªç¯ï¼Œ0 to length -1 
 	for(i; i < length - 1; i++){ 					//  n 
-		//key = i to length -2£¬´¢´æ×îĞ¡ÖµµÄÏÂ±ê
+		//key = i to length -2ï¼Œå‚¨å­˜æœ€å°å€¼çš„ä¸‹æ ‡
 		key = i;									//n-1
-		//Ñ­»·£¬i+1 to length -1 
+		//å¾ªç¯ï¼Œi+1 to length -1 
 		for(j = i + 1; j < length; j++){			// (n * n+1) /2
-			//±È½Ï£¬Ğ¡ÓÚ¾Í°ÑÏÂ±ê¸³Öµ¸økey
+			//æ¯”è¾ƒï¼Œå°äºå°±æŠŠä¸‹æ ‡èµ‹å€¼ç»™key
 			if(arr[j] < arr[key])					//(n * n+1) /2 - 1
 				key = j;							//n	
 		}
-		//Ìø³öÄÚÑ­»·£¬ÕÒµ½µÚÒ»ÂÖ×îĞ¡ÖµÏÂ±êkey
+		//è·³å‡ºå†…å¾ªç¯ï¼Œæ‰¾åˆ°ç¬¬ä¸€è½®æœ€å°å€¼ä¸‹æ ‡key
 		if(arr[key] != arr[i])						// n -1
-			//½»»»Êı×éÎ»ÓÚÏÂ±êiºÍÏÂ±êkeyµÄÖµ
+			//äº¤æ¢æ•°ç»„ä½äºä¸‹æ ‡iå’Œä¸‹æ ‡keyçš„å€¼
 			swap(arr[i], arr[key]);					//n-1 
 	}
 	return 0;
 }
 
-//Ëã·¨µ¼ÂÛÏ°Ìâ£¬2.3-2 
+//ç®—æ³•å¯¼è®ºä¹ é¢˜ï¼Œ2.3-2 
 int merge(int *arr, int p, int q, int r){
 	
 
 	int m  = 0, n = 0, i = p;
 
-	//ÉêÇë¶¯Ì¬ÄÚ´æ
+	//ç”³è¯·åŠ¨æ€å†…å­˜
 	int *Larr = calloc(sizeof(int),  (q-p+1));
 	int *Rarr = calloc(sizeof(int),  (r-q));
-	//½«×ó°ë²¿copyµ½Larr
+	//å°†å·¦åŠéƒ¨copyåˆ°Larr
 	memcpy(Larr, &arr[p], sizeof(int)*(q-p+1));
-	//ÓÒ°ë²¿copyµ½Rarr
+	//å³åŠéƒ¨copyåˆ°Rarr
 	memcpy(Rarr, &arr[q-p+1], sizeof(int)*(r-q));
-	//Ñ­»·£¬´ÓÏÂ±êpµ½r
+	//å¾ªç¯ï¼Œä»ä¸‹æ ‡påˆ°r
 	for (i = p; i <= r; i++){
-		//Èç¹û×ó±ßµÚÒ»¸öÊı¾İ½ÏĞ¡£¬copyµ½arr
+		//å¦‚æœå·¦è¾¹ç¬¬ä¸€ä¸ªæ•°æ®è¾ƒå°ï¼Œcopyåˆ°arr
 		if(Larr[m] <= Rarr[n]){
 			arr[i] = Larr[m];
-			//copyÍê½«m+1
+			//copyå®Œå°†m+1
 			m++;
-			//m³¬³öÊı×é×î´ó³¤¶È£¬½«RarrÊ£ÏÂ²¿·Öcopyµ½arr£¬È»ºóÌø³öÑ­»·¡£
+			//mè¶…å‡ºæ•°ç»„æœ€å¤§é•¿åº¦ï¼Œå°†Rarrå‰©ä¸‹éƒ¨åˆ†copyåˆ°arrï¼Œç„¶åè·³å‡ºå¾ªç¯ã€‚
 			if(m >= q-p+1){
 				memcpy(&arr[i+1], &Rarr[n], r-n+1);
 				break;
 			}
 
 		}
-		//Èç¹ûÓÒ±ßµÚÒ»¸öÊı¾İ½ÏĞ¡£¬copyµ½arr
+		//å¦‚æœå³è¾¹ç¬¬ä¸€ä¸ªæ•°æ®è¾ƒå°ï¼Œcopyåˆ°arr
 		else{
 			arr[i] = Rarr[n];
 			n++;
-			//n³¬³öÊı×é×î´ó³¤¶È£¬½«LarrÊ£ÏÂ²¿·Öcopyµ½arr
+			//nè¶…å‡ºæ•°ç»„æœ€å¤§é•¿åº¦ï¼Œå°†Larrå‰©ä¸‹éƒ¨åˆ†copyåˆ°arr
 			if(n >= r-q){
 				memcpy(&arr[i+1], &Larr[m], q-m+1);
 				break;
@@ -112,39 +112,49 @@ int merge(int *arr, int p, int q, int r){
 	return 0;
 
 }
-/*	¹é²¢ÅÅĞò
-	arr:Êı×é
-	p:×óÏÂ±ê
-	r:ÓÒÏÂ±ê
+/*	å½’å¹¶æ’åº
+	arr:æ•°ç»„
+	p:å·¦ä¸‹æ ‡
+	r:å³ä¸‹æ ‡
 */
 int merge_sort(int *arr, int p, int r){
 
-	//Èç¹ûÖ»ÓĞÒ»¸öÊı¾İ£¬¾ÍÍË³ö¡£
+	//å¦‚æœåªæœ‰ä¸€ä¸ªæ•°æ®ï¼Œå°±é€€å‡ºã€‚
 	if(p >= r) return -1;
-	//µİ¹éÑ­»·×ó°ë²¿
+	//é€’å½’å¾ªç¯å·¦åŠéƒ¨
 	merge_sort(arr, p, (p + r)/2);
-	//µİ¹éÑ­»·ÓÒ°ë²¿
+	//é€’å½’å¾ªç¯å³åŠéƒ¨
 	merge_sort(arr, (p + r)/2 + 1, r);
-	//×óÓÒºÏ²¢
+	//å·¦å³åˆå¹¶
 	merge(arr, p , (p + r)/2, r);
 
 	return 0;
 }
 
-//Ëã·¨µ¼ÂÛÏ°Ìâ2.1-2
+//ç®—æ³•å¯¼è®ºä¹ é¢˜2.1-2
 int insert_sort(int *arr, int len){
+	//æ•°ç»„å…ƒç´ ä¸ªæ•°å°äº2å°±é€€å‡º
 	if(len < 2) return -1;
-	int i = 1;
-	int j = 0;
-	int key = 0;
+	
+	int i = 1, j = 0, key = 0;
+	//å¾ªç¯ï¼Œä»æ•°ç»„ç¬¬äºŒä¸ªå…ƒç´ å¼€å§‹ï¼Œç›´åˆ°æœ€åä¸€ä¸ªå…ƒç´ 
 	for(i = 1; i < len; i++){
+		
+		//æš‚æ—¶ä¿å­˜å½“å‰è¦æ’åºçš„å…ƒç´ 
 		key = arr[i];
+		
+		//æ­¤ä¸‹æ ‡èµ‹å€¼ä¸ºå½“å‰æ’åºå…ƒç´ çš„å‰ä¸€ä¸ªä¸‹æ ‡
 		j = i - 1;
+
+		//å¾ªç¯ï¼Œæ¯”è¾ƒå½“å‰æ’åºå…ƒç´ å’Œä¸‹æ ‡ä¸ºjçš„å…ƒç´ 
 		while(arr[j] < key){
+			//keyè¾ƒå¤§ï¼Œåˆ™å‘åç§»åŠ¨ä¸‹æ ‡jçš„å…ƒç´ 
 			arr[j + 1] = arr[j];
 			j--;
+			//ç¬¬ä¸€ä¸ªå…ƒç´ å·²ç»æ¯”è¾ƒå®Œ
 			if(j < 0) break;
 		}
+		//å°†å½“å‰è¦æ’åºçš„å…ƒç´ keyï¼Œèµ‹å€¼ç»™ä¸‹æ ‡j+1çš„ä½ç½®ï¼Œå› ä¸ºkeyæ¯”ä¸‹æ ‡jçš„å…ƒç´ å°ï¼Œæˆ–è€…å·²ç»æ¯”è¾ƒå®Œå…¨éƒ¨å…ƒç´ 
 		arr[j+1] = key;
 	}
 
@@ -156,16 +166,16 @@ int insert_sort(int *arr, int len){
 int main(int argc, char ** argv){
 	int arr[5] = {2,1,5,3,2};
 	
-	//Ñ¡ÔñÅÅĞò
+	//é€‰æ‹©æ’åº
 	//select_sort(arr, sizeof(arr)/sizeof(int));
 
-	//¹é²¢ÅÅĞò
+	//å½’å¹¶æ’åº
 	//merge_sort(arr, 0, sizeof(arr)/sizeof(int) - 1);
 
-	//µİ¹é²åÈëÅÅĞò
+	//é€’å½’æ’å…¥æ’åº
 	//recursive_insert_sort(arr, sizeof(arr)/sizeof(int));
 
-	//²åÈëÅÅĞò
+	//æ’å…¥æ’åº
 	insert_sort(arr, sizeof(arr)/sizeof(int));
 	
 	return 0;
