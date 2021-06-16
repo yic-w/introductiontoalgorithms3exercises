@@ -31,6 +31,7 @@ int insert_sort_only_last(int *arr, int length){
 }
 
 /*
+	算法导论习题2.3-4
 	递归插入排序
 	arr:数组
 	length:数组长度
@@ -130,8 +131,25 @@ int merge_sort(int *arr, int p, int r){
 	return 0;
 }
 
+//算法导论习题2.1-2
+int insert_sort(int *arr, int len){
+	if(len < 2) return -1;
+	int i = 1;
+	int j = 0;
+	int key = 0;
+	for(i = 1; i < len; i++){
+		key = arr[i];
+		j = i - 1;
+		while(arr[j] < key){
+			arr[j + 1] = arr[j];
+			j--;
+			if(j < 0) break;
+		}
+		arr[j+1] = key;
+	}
 
-
+	return 0;
+}
 
 
 
@@ -145,7 +163,10 @@ int main(int argc, char ** argv){
 	//merge_sort(arr, 0, sizeof(arr)/sizeof(int) - 1);
 
 	//递归插入排序
-	recursive_insert_sort(arr, sizeof(arr)/sizeof(int));
+	//recursive_insert_sort(arr, sizeof(arr)/sizeof(int));
 
+	//插入排序
+	insert_sort(arr, sizeof(arr)/sizeof(int));
+	
 	return 0;
 }
