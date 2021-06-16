@@ -34,3 +34,25 @@ excel表格排序，将给定的数据按从小到大或从大到小的顺序排
 | n³      | 10     | 第二列     | 表格      | 第一列     | 第二列     | 第二列     | 第二列     |  
 | 2^n     | 9     | 第二列     | 表格      | 第一列     | 第二列     | 第二列     | 第二列     |  
 | n!      | 6     | 第二列     | 表格      | 第一列     | 第二列     | 第二列     | 第二列     |  
+# 第二章
+## 2.1-2
+```c
+int insert_sort(int *arr, int len){
+	if(len < 2) return -1;
+	int i = 1;
+	int j = 0;
+	int key = 0;
+	for(i = 1; i < len; i++){
+		key = arr[i];
+		j = i - 1;
+		while(arr[j] < key){
+			arr[j + 1] = arr[j];
+			j--;
+			if(j < 0) break;
+		}
+		arr[j+1] = key;
+	}
+
+	return 0;
+}
+```
