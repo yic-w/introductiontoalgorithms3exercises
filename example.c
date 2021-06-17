@@ -151,10 +151,10 @@ int insert_sort(int *arr, int len){
 			//key较大，则向后移动下标j的元素
 			arr[j + 1] = arr[j];
 			j--;
-			//第一个元素已经比较完
+			//最后一个元素已经比较完
 			if(j < 0) break;
 		}
-		//将当前要排序的元素key，赋值给下标j+1的位置，因为key比下标j的元素小，或者已经比较完全部元素
+		//将当前要排序的元素key，赋值给下标j+1的位置
 		arr[j+1] = key;
 	}
 
@@ -177,6 +177,7 @@ int main(int argc, char ** argv){
 
 	//插入排序
 	insert_sort(arr, sizeof(arr)/sizeof(int));
+	
 	
 	return 0;
 }
