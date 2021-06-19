@@ -35,6 +35,13 @@ excel表格排序，将给定的数据按从小到大或从大到小的顺序排
 | 2^n     | 9     | 第二列     | 表格      | 第一列     | 第二列     | 第二列     | 第二列     |  
 | n!      | 6     | 第二列     | 表格      | 第一列     | 第二列     | 第二列     | 第二列     |  
 # 第二章
+## 2.1-1
+![Image text]( https://img-blog.csdn.net/20180716214817682?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzQxNjE5NjU4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![Image text]( https://img-blog.csdn.net/20180716214834521?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzQxNjE5NjU4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![Image text]( https://img-blog.csdn.net/2018071621485689?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzQxNjE5NjU4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![Image text]( https://img-blog.csdn.net/20180716214910737?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzQxNjE5NjU4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![Image text]( https://img-blog.csdn.net/20180716214923188?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzQxNjE5NjU4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![Image text]( https://img-blog.csdn.net/20180716214935691?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzQxNjE5NjU4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 ## 2.1-2
 ```c
 //算法导论习题2.1-2
