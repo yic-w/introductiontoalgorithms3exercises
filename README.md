@@ -74,3 +74,10 @@ int insert_sort(int *arr, int len){
 	return 0;
 }
 ```
+## 2.1-3
+```c
+	serch (A, v)
+		while i < A.length and A[i] != v
+			i++;
+		return i;
+```
