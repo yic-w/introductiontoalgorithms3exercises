@@ -84,5 +84,5 @@ int insert_sort(int *arr, int len){
 		return NIL
 ```
 初始化：第一次循环迭代之前，数组中存在数据，恒为真  
-保持：数组下标i之前的数据都不等于v
+保持：数组下标i之前的数据都不等于v  
 终止：终止条件i < A.length 或者 下标i的数据等于v
