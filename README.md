@@ -86,3 +86,16 @@ int insert_sort(int *arr, int len){
 初始化：第一次循环迭代之前，数组中存在数据，恒为真  
 保持：数组下标i之前的数据都不等于v  
 终止：终止条件i < A.length 或者 下标i的数据等于v
+## 2.1-4
+形式化描述：  
+	输入：存储两个n元二进制整数的n元数组A、B  
+	输出：存储两个n元二进制整数的和的n+1元数组C  
+```c
+	sum (A, B)
+		key = 0
+		for i to n 
+			C[i] = (A[i] + B[i] + key ) MOD 2
+			key = (A[i] + B[i]) / 2
+		C[n + 1] = key
+		return C
+```
