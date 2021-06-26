@@ -99,3 +99,5 @@ int insert_sort(int *arr, int len){
 		C[n + 1] = key
 		return C
 ```
+## 2.2-1
+θ（n³）
