@@ -101,3 +101,13 @@ int insert_sort(int *arr, int len){
 ```
 ## 2.2-1
 θ（n³）
+## 2.2-2
+```c
+	select-sort(A, length)
+		for i in 1 to n-1
+			smallest_position = i
+			for j in i+1 to n
+				if A[i] > A[j]
+					smallest_position = j
+			swap(A[i], A[smallest_position])
+```
