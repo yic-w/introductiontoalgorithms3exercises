@@ -107,7 +107,7 @@ int insert_sort(int *arr, int len){
 		for i in 1 to n-1
 			smallest_position = i
 			for j in i+1 to n
-				if A[i] > A[j]
+				if A[smallest_position] > A[j]
 					smallest_position = j
 			swap(A[i], A[smallest_position])
 ```
