@@ -111,3 +111,6 @@ int insert_sort(int *arr, int len){
 					smallest_position = j
 			swap(A[i], A[smallest_position])
 ```
+初始化：第一次循环迭代之前，子数组中还没有数据  
+保持：内层循环每次迭代都保证最小值的下标smallest_position，循环完毕后与A[i]交换，所以外层每次循环前，A[1..i-1]都是按从小到大的顺序排序好的  
+终止：外层循环终止条件为i >= n，子数组A[1..n]由原来在A[1..n]中的元素组成，但已按序排列，此时子数组A[1..n]就是整个数组，推断出整个数组已排序，因此算法正确  
