@@ -103,14 +103,21 @@ int insert_sort(int *arr, int len){
 θ（n³）
 ## 2.2-2
 ```c
-	select-sort(A, length)
-		for i in 1 to n-1
-			smallest_position = i
-			for j in i+1 to n
-				if A[smallest_position] > A[j]
-					smallest_position = j
-			swap(A[i], A[smallest_position])
+	select-sort(A, length)                                     代价    次数
+		for i in 1 to n-1                                      c1      n-1
+			smallest_position = i                              c2      n-2
+			for j in i+1 to n                                  c3      ∑（i=1..n-1)ti
+				if A[smallest_position] > A[j]                 c4      ∑（i=1..n-1)ti -1
+					smallest_position = j                      c5      ∑（i=1..n-1)ti -1
+			swap(A[i], A[smallest_position])                   c6      n-1
 ```
+### 循环不变式
 初始化：第一次循环迭代之前，子数组中还没有数据  
 保持：内层循环每次迭代都保证最小值的下标smallest_position，循环完毕后与A[i]交换，所以外层每次循环前，A[1..i-1]都是按从小到大的顺序排序好的  
 终止：外层循环终止条件为i >= n，子数组A[1..n]由原来在A[1..n]中的元素组成，但已按序排列，此时子数组A[1..n]就是整个数组，推断出整个数组已排序，因此算法正确  
+### 为什么只需对n-1个元素运行
+运行到第n-1个元素时，将和第n个元素比较，所以第n个元素无需再运行
+### 最好情况
+输入A内的数据都已按升序排序：则c5 = 0，T(n) = c1(n-1) + c2(n-2) + c3∑（i=1..n-1)ti + c4∑（i=1..n-1)(ti -1) + c6(n-1)   = θ(n²)
+### 最坏情况
+输入A内的数据都已按降序排序：，T(n) = c1(n-1) + c2(n-2) + c3∑（i=1..n-1)ti + c4∑（i=1..n-1)(ti -1) + c5∑（i=1..n-1)(ti -1) + c6(n-1)   = θ(n²)
