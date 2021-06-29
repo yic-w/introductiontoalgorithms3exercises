@@ -207,15 +207,15 @@ T(n) = T(n-1) + n
 int insert_sort_only_last(int *arr, int length){
 	if(length < 2) return -1;
 
-	int i = length - 2, key = arr[length - 1];
+	int i = length - 2/*倒数第二个元素*/, key = arr[length - 1]/*倒数第一个元素*/;
 
-	while(key < arr[i]){
-		arr[i+1] = arr[i];
-		i--;
+	while(key < arr[i]){//循环比较
+		arr[i+1] = arr[i];//较大元素往后稍稍
+		i--;//下标前移
 		if(i < 0) break;
 	}
 	
-	arr[i+1] = key;
+	arr[i+1] = key;//赋值
 
 	return 0;
 }
@@ -228,8 +228,8 @@ int insert_sort_only_last(int *arr, int length){
 	*/
 int recursive_insert_sort(int *arr, int length){
 	if(length <= 1) return -1;
-	recursive_insert_sort(arr, length - 1);
-	insert_sort_only_last(arr, length);
+	recursive_insert_sort(arr, length - 1);//递归调用
+	insert_sort_only_last(arr, length);//排序最后元素
 
 
 	return 0;
