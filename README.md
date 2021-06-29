@@ -198,3 +198,41 @@ int merge_sort(int *arr, int p, int r){
 暂无
 ## 2.3-4
 T(n) = T(n-1) + n
+```c
+/*
+	功能:只排序数组最后一位
+	arr:数组
+	length:数组长度
+	*/
+int insert_sort_only_last(int *arr, int length){
+	if(length < 2) return -1;
+
+	int i = length - 2, key = arr[length - 1];
+
+	while(key < arr[i]){
+		arr[i+1] = arr[i];
+		i--;
+		if(i < 0) break;
+	}
+	
+	arr[i+1] = key;
+
+	return 0;
+}
+
+/*
+	算法导论习题2.3-4
+	递归插入排序
+	arr:数组
+	length:数组长度
+	*/
+int recursive_insert_sort(int *arr, int length){
+	if(length <= 1) return -1;
+	recursive_insert_sort(arr, length - 1);
+	insert_sort_only_last(arr, length);
+
+
+	return 0;
+}
+```
+## 2.3-5
