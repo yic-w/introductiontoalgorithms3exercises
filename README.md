@@ -194,3 +194,7 @@ int merge_sort(int *arr, int p, int r){
 	return 0;
 }
 ```
+## 2.3-3
+暂无
+## 2.3-4
+T(n) = T(n-1) + n
