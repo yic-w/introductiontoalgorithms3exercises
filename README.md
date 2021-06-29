@@ -238,13 +238,13 @@ int recursive_insert_sort(int *arr, int length){
 ## 2.3-5
 ### 伪代码
 ```c
-half-serach(A, v, p, q)
-	if(v == A[(p+q) / 2])
-		return (p+q) / 2
-	else if v > A[(p+q) / 2]
-		half-serach(A, v, (p+q) / 2 + 1, q)
+half-serach(A, v, start, end)
+	if v == A[half]
+		return half
+	else if v > A[half]
+		half-serach(A, v, half + 1, end)
 	else
-		half-serach(A, v, p, (p+q) / 2 - 1)
+		half-serach(A, v, start, half - 1)
 ```
 ### C
 ```c
