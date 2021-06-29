@@ -127,3 +127,5 @@ int insert_sort(int *arr, int len){
 平均和最坏运行时间都是θ(n)
 ## 2.2-4
 idontkonw
+## 2.3-1
+![Image text]( https://img-blog.csdn.net/20180717090444307?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzQxNjE5NjU4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
