@@ -259,3 +259,5 @@ int half_serach(int *arr, int v, int p, int q){
 		return half_serach(arr, v, p, (p+q) / 2 - 1);
 }
 ```
+### 证明
+递归式：T(n) = T(n/2) + 1，所以T(n) = θ（lgn）
