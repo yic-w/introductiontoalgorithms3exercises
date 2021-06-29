@@ -129,3 +129,68 @@ int insert_sort(int *arr, int len){
 idontkonw
 ## 2.3-1
 ![Image text]( https://img-blog.csdn.net/20180717090444307?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzQxNjE5NjU4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+## 2.3-2
+```c
+int merge(int *arr, int p, int q, int r){
+	
+
+	int m  = 0, n = 0, i = p;
+
+	//申请动态内存
+	int *Larr = calloc(sizeof(int),  (q-p+1));
+	int *Rarr = calloc(sizeof(int),  (r-q));
+	//将左半部copy到Larr
+	memcpy(Larr, &arr[p], sizeof(int)*(q-p+1));
+	//右半部copy到Rarr
+	memcpy(Rarr, &arr[q-p+1], sizeof(int)*(r-q));
+	//循环，从下标p到r
+	for (i = p; i <= r; i++){
+		//如果左边第一个数据较小，copy到arr
+		if(Larr[m] <= Rarr[n]){
+			arr[i] = Larr[m];
+			//copy完将m+1
+			m++;
+			//m超出数组最大长度，将Rarr剩下部分copy到arr，然后跳出循环。
+			if(m >= q-p+1){
+				memcpy(&arr[i+1], &Rarr[n], r-n+1);
+				break;
+			}
+
+		}
+		//如果右边第一个数据较小，copy到arr
+		else{
+			arr[i] = Rarr[n];
+			n++;
+			//n超出数组最大长度，将Larr剩下部分copy到arr
+			if(n >= r-q){
+				memcpy(&arr[i+1], &Larr[m], q-m+1);
+				break;
+			}
+		}
+	
+	}
+
+	free(Larr);
+	free(Rarr);
+	return 0;
+
+}
+/*	归并排序
+	arr:数组
+	p:左下标
+	r:右下标
+*/
+int merge_sort(int *arr, int p, int r){
+
+	//如果只有一个数据，就退出。
+	if(p >= r) return -1;
+	//递归循环左半部
+	merge_sort(arr, p, (p + r)/2);
+	//递归循环右半部
+	merge_sort(arr, (p + r)/2 + 1, r);
+	//左右合并
+	merge(arr, p , (p + r)/2, r);
+
+	return 0;
+}
+```
