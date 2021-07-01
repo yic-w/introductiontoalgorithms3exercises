@@ -260,4 +260,4 @@ int half_serach(int *arr, int v, int p, int q){
 }
 ```
 ### 证明
-递归式：T(n) = T(n/2) + 1，所以T(n) = θ（lgn）
+递归式：T(n) = T(n/2) + 1 = T(n/2²） + 2 = T(n/2³） + 3 =  θ（lgn）
