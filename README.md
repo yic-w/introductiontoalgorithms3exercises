@@ -249,15 +249,17 @@ half-serach(A, v, start, end)
 ### C
 ```c
 int half_serach(int *arr, int v, int p, int q){
-	if(p == q)
+	if(p == q) // 递归结束
 		return v == arr[p] ? p : -1;
-	if(v == arr[(p+q) / 2])
+	if(v == arr[(p+q) / 2])//中点
 		return (p+q) / 2;
 	else if (v > arr[(p+q) / 2])
-		return half_serach(arr, v, (p+q) / 2 + 1, q);
+		return half_serach(arr, v, (p+q) / 2 + 1, q);//递归调用右半部
 	else
-		return half_serach(arr, v, p, (p+q) / 2 - 1);
+		return half_serach(arr, v, p, (p+q) / 2 - 1);//递归调用左半部
 }
 ```
 ### 证明
-递归式：T(n) = T(n/2) + 1 = T(n/2²） + 2 = T(n/2³） + 3 =  θ（lgn）
+递归式：T(n) = T(n/2) + 1 = T(n/2²） + 2 = T(n/2³） + 3 ...以此类推 =  θ（lgn）
+## 2.3-6
+
