@@ -56,7 +56,7 @@ int insert_sort(int *arr, int len){
 		//暂时保存当前要排序的元素
 		key = arr[i];
 		
-		//此下标赋值为当前排序元素的前一个下标
+		//j赋值为当前排序元素的前一个元素下标
 		j = i - 1;
 
 		//循环，比较当前排序元素和下标为j的元素
@@ -246,7 +246,7 @@ half-serach(A, v, start, end)
 	else
 		half-serach(A, v, start, half - 1)
 ```
-### C
+### C递归
 ```c
 int half_serach(int *arr, int v, int p, int q){
 	if(p == q) // 递归结束
@@ -259,7 +259,36 @@ int half_serach(int *arr, int v, int p, int q){
 		return half_serach(arr, v, p, (p+q) / 2 - 1);//递归调用左半部
 }
 ```
+### C循环
+```c
+int half_serach(int *arr, int v, int length){
+
+	int start = 0;
+	int end = length - 1;
+	int mid = 0;
+	while(start <= end>){
+
+		mid = (start + end) / 2;
+		if(arr[mid] == v){
+			return mid;
+		}else if (arr[mid] < v){
+
+			start = mid + 1;
+			continue;
+		}else{
+			end = mid - 1;
+			continue;
+
+		}
+
+	}
+
+	return -1;
+
+}
+```
 ### 证明
 递归式：T(n) = T(n/2) + 1 = T(n/2²） + 2 = T(n/2³） + 3 ...以此类推 =  θ（lgn）
 ## 2.3-6
+不行。二分查找只是找出了当前元素插入的位置，对于向后移动元素没有任何影响，甚至有些多此一举。时间复杂度还是n²
 
