@@ -300,4 +300,5 @@ int half_serach(int *arr, int v, int length){
 ## 思考题
 ## 2-1
 a：插入排序复杂度为k²，那么排序n/k个子表，总复杂度为k²*n/k = nk  
-
+b：每层需要合并全部元素n，复杂度为θ（n），递归树共lg（n/k）层，总复杂度为nlgn/k  
+c:
