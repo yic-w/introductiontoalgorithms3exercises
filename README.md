@@ -318,3 +318,11 @@ multi-sum(A,n,x)
 		sum += A[i] * s
 ```
 运行时间为θ（n²），性能比霍纳规则差
+### c
+初始化：在第一次迭代之前， i = n，y = 0，满足条件。
+
+保持：第 i 次迭代，
+![Image text]( https://math.jianshu.com/math?formula=y%20%3D%20a_%7Bi%7D%20%2B%20x%20%5Csum_%7Bk%20%3D%200%7D%5E%7Bn%20-%20(i%20%2B%201)%7D%20a_%7Bk%20%2B%20i%20%2B%201%7D%20x%5Ek%20%3D%20a_%7Bi%7D%20x%5E0%20%2B%20%5Csum_%7Bk%20%3D%200%7D%5E%7Bn%20-%20(i%20%2B%201)%7D%20a_%7Bk%20%2B%20i%20%2B%201%7D%20x%5E%7Bk%20%2B%201%7D%20%3D%20a_%7Bi%7D%20x%5E0%20%2B%20%5Csum_%7Bk%20%3D%201%7D%5E%7Bn%20-%20i%7D%20a_%7Bk%20%2B%20i%7D%20x%5Ek%20%3D%20%5Csum_%7Bk%20%3D%200%7D%5E%7Bn%20-%20i%7D%20a_%7Bk%20%2B%20i%7D%20x%5Ek)  
+终止：i = -1，则 ![Image text]( https://math.jianshu.com/math?formula=y%20%3D%20%5Csum_%7Bk%20%3D%200%7D%5E%7Bn%20-%20(-1%20%2B%201)%7D%20a_%7Bk%20-%201%20%2B%201%7D%20x%5Ek.%20%3D%20%5Csum_%7Bk%20%3D%200%7D%5E%7Bn%7D%20a_%7Bk%7D%20x%5Ek)，满足题意。
+### d
+由c得出结论
