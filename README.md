@@ -326,3 +326,4 @@ multi-sum(A,n,x)
 终止：i = -1，则 ![Image text]( https://math.jianshu.com/math?formula=y%20%3D%20%5Csum_%7Bk%20%3D%200%7D%5E%7Bn%20-%20(-1%20%2B%201)%7D%20a_%7Bk%20-%201%20%2B%201%7D%20x%5Ek.%20%3D%20%5Csum_%7Bk%20%3D%200%7D%5E%7Bn%7D%20a_%7Bk%7D%20x%5Ek)，满足题意。
 ### d
 由c得出结论
+## 2-4
