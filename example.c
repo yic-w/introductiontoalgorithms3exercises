@@ -161,11 +161,49 @@ int insert_sort(int *arr, int len){
 	return 0;
 }
 
+/*
+	思考题2-4
 
+*/
 
+int inversion_number_sum(int *arr, int p, int q, int r){
+
+	int i = p; //左边数组下标
+	int j = q+1; //右边数组下标
+	int n1 = p - q + 1; // 左边数组元素个数
+	int n2 = r - q; // 右边数组元素个数
+	int number = 0;
+	while(i <= q  && j <= r){
+
+		if(arr[i] <= arr[j]){
+			i++;
+			continue;
+		}else{
+
+			j++;
+			number += n1 - i; //此时arr[i]以及左边数组剩下的元素均大于arr[j]
+			continue；
+		}
+	}
+	return number；
+
+}
+
+int recursive_inversion_number_sum(int *arr, int p, int r){
+
+	if(p >= r) return 0;
+
+	int number = 0；
+	int q = (p+r)/2;
+	number += recursive_inversion_number_sum(arr, p, q);
+	number += recursive_inversion_number_sum(arr, q+1, r);
+	number += inversion_number_sum(arr, p, q, r);
+	return number;
+}
 int main(int argc, char ** argv){
 	int arr[5] = {2,1,5,3,2};
-	
+	int arr1[8] = {8,7,6,5,1,2,3,4};
+	int num = 0;
 	//选择排序
 	//select_sort(arr, sizeof(arr)/sizeof(int));
 
@@ -176,8 +214,10 @@ int main(int argc, char ** argv){
 	//recursive_insert_sort(arr, sizeof(arr)/sizeof(int));
 
 	//插入排序
-	insert_sort(arr, sizeof(arr)/sizeof(int));
+	//insert_sort(arr, sizeof(arr)/sizeof(int));
 	
+	//逆序对
+	num = recursive_inversion_number_sum(arr1, 0, sizeof(arr1)/sizeof(int)-1);
 	
 	return 0;
 }
