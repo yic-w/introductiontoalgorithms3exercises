@@ -327,7 +327,76 @@ multi-sum(A,n,x)
 ### d
 由c得出结论
 ## 2-4
-a:（2,1）（3,1）（8,1）（6,1）（8,6）  
-b: 降序数组逆序对最多；sum{n-1...1} = n(n-1) / 2  
-c: 逆序对数量m为copy操作的次数；T(n) = n + m  
-d: 
+### a
+（2,1）（3,1）（8,1）（6,1）（8,6）  
+### b
+降序数组逆序对最多；sum{n-1...1} = n(n-1) / 2  
+### c
+逆序对数量m为copy操作的次数；T(n) = n + m  
+### d 
+```c
+int inversion_number_sum(int *arr, int p, int q, int r){
+
+	int m  = 0, n = 0, i = 0;
+	int n1 = q - p + 1;
+	int n2 = r - q;
+	int num = 0;
+	//申请动态内存
+	int *Larr = calloc(sizeof(int),  n1);
+	int *Rarr = calloc(sizeof(int),  n2);
+	//将左半部copy到Larr
+	memcpy(Larr, &arr[p], sizeof(int) * n1);
+	//右半部copy到Rarr
+	memcpy(Rarr, &arr[q+1], sizeof(int) * n2);
+	//循环，从下标p到r
+	for (i = p; i <= r; i++){
+		//如果左边第一个数据较小，copy到arr
+		if(Larr[m] <= Rarr[n]){
+			arr[i] = Larr[m];
+			//copy完将m+1
+			m++;
+			//m超出数组最大长度，将Rarr剩下部分copy到arr，然后跳出循环。
+			if(m >= n1){
+				while(++i <= r){
+					arr[i] = Rarr[n++];
+				}
+				//memcpy(&arr[i+1], &Rarr[n], n2-n);
+				break;
+			}
+
+		}
+		//如果右边第一个数据较小，copy到arr
+		else{
+			arr[i] = Rarr[n];
+			n++;
+			num += n1 - m; //此时Larr剩下的元素均大于Rarr[n]
+			//n超出数组最大长度，将Larr剩下部分copy到arr
+			if(n >= n2){
+				while(++i <= r){
+					arr[i] = Larr[m++];
+				}
+				//memcpy(&arr[i+1], &Larr[m], n1-m);
+				break;
+			}
+		}
+	
+	}
+
+	free(Larr);
+	free(Rarr);
+	return num;
+
+}
+
+int recursive_inversion_number_sum(int *arr, int p, int r){
+
+	if(p >= r) return 0;
+
+	int number = 0;
+	int q = (p+r)/2;
+	number += recursive_inversion_number_sum(arr, p, q);
+	number += recursive_inversion_number_sum(arr, q+1, r);
+	number += inversion_number_sum(arr, p, q, r);
+	return number;
+}
+```
