@@ -182,10 +182,10 @@ int inversion_number_sum(int *arr, int p, int q, int r){
 
 			j++;
 			number += n1 - i; //此时arr[i]以及左边数组剩下的元素均大于arr[j]
-			continue；
+			continue;
 		}
 	}
-	return number；
+	return number;
 
 }
 
