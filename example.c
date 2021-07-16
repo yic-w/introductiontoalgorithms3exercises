@@ -168,22 +168,41 @@ int insert_sort(int *arr, int len){
 
 int inversion_number_sum(int *arr, int p, int q, int r){
 
-	int i = p; //左边数组下标
-	int j = q+1; //右边数组下标
-	int n1 = p - q + 1; // 左边数组元素个数
+	int i = 0;
+	int j = 0; 
+	int k = 0;
+	int n1 = q - p + 1; // 左边数组元素个数
 	int n2 = r - q; // 右边数组元素个数
 	int number = 0;
-	while(i <= q  && j <= r){
 
-		if(arr[i] <= arr[j]){
-			i++;
-			continue;
+	//申请动态内存
+	int *Larr = calloc(sizeof(int),  n1);
+	int *Rarr = calloc(sizeof(int),  n2);
+	//将左半部copy到Larr
+	memcpy(Larr, &arr[p], sizeof(int) * n1);
+	//右半部copy到Rarr
+	memcpy(Rarr, &arr[n1], sizeof(int) * n2);
+
+	while(i < n1  && j < n2){
+
+		if(Larr[i] <= Rarr[j]){
+
+			arr[k] = Larr[i++];
+
+			if(i >= n1){
+				memcpy(&arr[k+1], &Rarr[j], n2 - j);
+				break;
+			}
+
 		}else{
-
-			j++;
+			arr[k] = Rarr[j++];
 			number += n1 - i; //此时arr[i]以及左边数组剩下的元素均大于arr[j]
-			continue;
+			if(j >= n2){
+				memcpy(&arr[k+1], &Larr[i], n1 - i);
+				break;
+			}
 		}
+		k++;
 	}
 	return number;
 
