@@ -71,15 +71,16 @@ int select_sort(int *arr, int length){
 int merge(int *arr, int p, int q, int r){
 	
 
-	int m  = 0, n = 0, i = p;
-
+	int m  = 0, n = 0, i = 0;
+	int n1 = q - p + 1;
+	int n2 = r - q;
 	//申请动态内存
-	int *Larr = calloc(sizeof(int),  (q-p+1));
-	int *Rarr = calloc(sizeof(int),  (r-q));
+	int *Larr = calloc(sizeof(int),  n1);
+	int *Rarr = calloc(sizeof(int),  n2);
 	//将左半部copy到Larr
-	memcpy(Larr, &arr[p], sizeof(int)*(q-p+1));
+	memcpy(Larr, &arr[p], sizeof(int) * n1);
 	//右半部copy到Rarr
-	memcpy(Rarr, &arr[q-p+1], sizeof(int)*(r-q));
+	memcpy(Rarr, &arr[q+1], sizeof(int) * n2);
 	//循环，从下标p到r
 	for (i = p; i <= r; i++){
 		//如果左边第一个数据较小，copy到arr
@@ -88,8 +89,11 @@ int merge(int *arr, int p, int q, int r){
 			//copy完将m+1
 			m++;
 			//m超出数组最大长度，将Rarr剩下部分copy到arr，然后跳出循环。
-			if(m >= q-p+1){
-				memcpy(&arr[i+1], &Rarr[n], r-n+1);
+			if(m >= n1){
+				while(++i <= r){
+					arr[i] = Rarr[n++];
+				}
+				//memcpy(&arr[i+1], &Rarr[n], n2-n);
 				break;
 			}
 
@@ -99,8 +103,11 @@ int merge(int *arr, int p, int q, int r){
 			arr[i] = Rarr[n];
 			n++;
 			//n超出数组最大长度，将Larr剩下部分copy到arr
-			if(n >= r-q){
-				memcpy(&arr[i+1], &Larr[m], q-m+1);
+			if(n >= n2){
+				while(++i <= r){
+					arr[i] = Larr[m++];
+				}
+				//memcpy(&arr[i+1], &Larr[m], n1-m);
 				break;
 			}
 		}
@@ -168,43 +175,54 @@ int insert_sort(int *arr, int len){
 
 int inversion_number_sum(int *arr, int p, int q, int r){
 
-	int i = 0;
-	int j = 0; 
-	int k = 0;
-	int n1 = q - p + 1; // 左边数组元素个数
-	int n2 = r - q; // 右边数组元素个数
-	int number = 0;
-
+	int m  = 0, n = 0, i = 0;
+	int n1 = q - p + 1;
+	int n2 = r - q;
+	int num = 0;
 	//申请动态内存
 	int *Larr = calloc(sizeof(int),  n1);
 	int *Rarr = calloc(sizeof(int),  n2);
 	//将左半部copy到Larr
 	memcpy(Larr, &arr[p], sizeof(int) * n1);
 	//右半部copy到Rarr
-	memcpy(Rarr, &arr[n1], sizeof(int) * n2);
-
-	while(i < n1  && j < n2){
-
-		if(Larr[i] <= Rarr[j]){
-
-			arr[k] = Larr[i++];
-
-			if(i >= n1){
-				memcpy(&arr[k+1], &Rarr[j], n2 - j);
+	memcpy(Rarr, &arr[q+1], sizeof(int) * n2);
+	//循环，从下标p到r
+	for (i = p; i <= r; i++){
+		//如果左边第一个数据较小，copy到arr
+		if(Larr[m] <= Rarr[n]){
+			arr[i] = Larr[m];
+			//copy完将m+1
+			m++;
+			//m超出数组最大长度，将Rarr剩下部分copy到arr，然后跳出循环。
+			if(m >= n1){
+				while(++i <= r){
+					arr[i] = Rarr[n++];
+				}
+				//memcpy(&arr[i+1], &Rarr[n], n2-n);
 				break;
 			}
 
-		}else{
-			arr[k] = Rarr[j++];
-			number += n1 - i; //此时arr[i]以及左边数组剩下的元素均大于arr[j]
-			if(j >= n2){
-				memcpy(&arr[k+1], &Larr[i], n1 - i);
+		}
+		//如果右边第一个数据较小，copy到arr
+		else{
+			arr[i] = Rarr[n];
+			n++;
+			num += n1 - m;
+			//n超出数组最大长度，将Larr剩下部分copy到arr
+			if(n >= n2){
+				while(++i <= r){
+					arr[i] = Larr[m++];
+				}
+				//memcpy(&arr[i+1], &Larr[m], n1-m);
 				break;
 			}
 		}
-		k++;
+	
 	}
-	return number;
+
+	free(Larr);
+	free(Rarr);
+	return num;
 
 }
 
@@ -228,6 +246,7 @@ int main(int argc, char ** argv){
 
 	//归并排序
 	//merge_sort(arr, 0, sizeof(arr)/sizeof(int) - 1);
+	//merge_sort(arr1, 0, sizeof(arr1)/sizeof(int) - 1);
 
 	//递归插入排序
 	//recursive_insert_sort(arr, sizeof(arr)/sizeof(int));
@@ -236,7 +255,7 @@ int main(int argc, char ** argv){
 	//insert_sort(arr, sizeof(arr)/sizeof(int));
 	
 	//逆序对
-	num = recursive_inversion_number_sum(arr1, 0, sizeof(arr1)/sizeof(int)-1);
+	num = recursive_inversion_number_sum(arr, 0, sizeof(arr)/sizeof(int)-1);
 	
 	return 0;
 }
