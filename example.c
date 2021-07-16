@@ -193,7 +193,7 @@ int recursive_inversion_number_sum(int *arr, int p, int r){
 
 	if(p >= r) return 0;
 
-	int number = 0；
+	int number = 0;
 	int q = (p+r)/2;
 	number += recursive_inversion_number_sum(arr, p, q);
 	number += recursive_inversion_number_sum(arr, q+1, r);
