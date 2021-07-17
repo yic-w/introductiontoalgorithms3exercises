@@ -408,3 +408,12 @@ int recursive_inversion_number_sum(int *arr, int p, int r){
 	return number;
 }
 ```
+# 第三章
+## 3.1-1
+存在n1,使所有n>n1,f(n)>=0  
+存在n2,使所有n>n2,g(n)>=0  
+令n0 = max（n1,n2),对于所有n>n0
+f <= max (f, g)  
+g <= max (f, g)  
+所以: f(n) + g(n) / 2 <= max(f, g), max(f, g) <= f(n) + g(n)   
+有：0<= (f(n) + g(n)) 1 / 2 <= max(f, g) <= f(n) + g(n) , c1 = 1/2, c2 = 1  
