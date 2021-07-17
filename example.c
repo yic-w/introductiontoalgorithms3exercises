@@ -259,22 +259,21 @@ int main(int argc, char ** argv){
 	int arr1[8] = {8,7,6,5,1,2,3,4};
 	int num = 0;
 	struct	timeval ts,te;
-	int *buff = NULL;
+	int *buf = NULL;
+	int i = 0;
 
-	buf = (int*)malloc(sizeof(int)*BUFSIZE);
+	buf = (int*)calloc(sizeof(int),BUFSIZE);
 	if(!buf) return 0;
 
 	for(i=0; i<BUFSIZE; i++){
 		buf[i] = BUFSIZE-i;
-		printf("%d ", buf[i]);
 	}
-	printf("\n ");
 	//选择排序
 	//select_sort(arr, sizeof(arr)/sizeof(int));
 
 	//归并排序
 	//merge_sort(arr, 0, sizeof(arr)/sizeof(int) - 1);
-	//merge_sort(arr1, 0, sizeof(arr1)/sizeof(int) - 1);
+	FUNC_TIME_SPEC(merge_sort(buf, 0, BUFSIZE - 1));
 
 	//递归插入排序
 	//recursive_insert_sort(arr, sizeof(arr)/sizeof(int));
@@ -283,12 +282,8 @@ int main(int argc, char ** argv){
 	//insert_sort(arr, sizeof(arr)/sizeof(int));
 	
 	//逆序对
-	num = recursive_inversion_number_sum(arr, 0, sizeof(arr)/sizeof(int)-1);
+	//num = recursive_inversion_number_sum(arr, 0, sizeof(arr)/sizeof(int)-1);
 
-	for(i=0; i<BUFSIZE; i++){
-		printf("%d ", buf[i]);
-	}
-	printf("\n ");
 	free(buf);
 	return 0;
 }
