@@ -134,15 +134,16 @@ idontkonw
 int merge(int *arr, int p, int q, int r){
 	
 
-	int m  = 0, n = 0, i = p;
-
+	int m  = 0, n = 0, i = 0;
+	int n1 = q - p + 1;
+	int n2 = r - q;
 	//申请动态内存
-	int *Larr = calloc(sizeof(int),  (q-p+1));
-	int *Rarr = calloc(sizeof(int),  (r-q));
+	int *Larr = calloc(sizeof(int),  n1);
+	int *Rarr = calloc(sizeof(int),  n2);
 	//将左半部copy到Larr
-	memcpy(Larr, &arr[p], sizeof(int)*(q-p+1));
+	memcpy(Larr, &arr[p], sizeof(int) * n1);
 	//右半部copy到Rarr
-	memcpy(Rarr, &arr[q-p+1], sizeof(int)*(r-q));
+	memcpy(Rarr, &arr[q+1], sizeof(int) * n2);
 	//循环，从下标p到r
 	for (i = p; i <= r; i++){
 		//如果左边第一个数据较小，copy到arr
@@ -151,8 +152,11 @@ int merge(int *arr, int p, int q, int r){
 			//copy完将m+1
 			m++;
 			//m超出数组最大长度，将Rarr剩下部分copy到arr，然后跳出循环。
-			if(m >= q-p+1){
-				memcpy(&arr[i+1], &Rarr[n], r-n+1);
+			if(m >= n1){
+				while(++i <= r){
+					arr[i] = Rarr[n++];
+				}
+				//memcpy(&arr[i+1], &Rarr[n], n2-n);
 				break;
 			}
 
@@ -162,8 +166,11 @@ int merge(int *arr, int p, int q, int r){
 			arr[i] = Rarr[n];
 			n++;
 			//n超出数组最大长度，将Larr剩下部分copy到arr
-			if(n >= r-q){
-				memcpy(&arr[i+1], &Larr[m], q-m+1);
+			if(n >= n2){
+				while(++i <= r){
+					arr[i] = Larr[m++];
+				}
+				//memcpy(&arr[i+1], &Larr[m], n1-m);
 				break;
 			}
 		}
