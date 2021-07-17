@@ -1,6 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/time.h>
+
+#define BUFSIZE		10000000
+
+#define FUNC_TIME_SPEC(func) do{\
+	struct	timeval ts,te;\
+	float	f;\
+	gettimeofday(&ts,NULL);\
+	func;\
+	gettimeofday(&te,NULL);\
+	f = 1000000 * (te.tv_sec - ts.tv_sec) \
+		+ te.tv_usec - ts.tv_usec;\
+	f /= 1000000;\
+ 	printf("%fs\n",f);\
+}while(0)
+
 
 //宏:交换两数的值。
 #define swap(a, b) {	\
@@ -241,6 +258,17 @@ int main(int argc, char ** argv){
 	int arr[5] = {2,1,5,3,2};
 	int arr1[8] = {8,7,6,5,1,2,3,4};
 	int num = 0;
+	struct	timeval ts,te;
+	int *buff = NULL;
+
+	buf = (int*)malloc(sizeof(int)*BUFSIZE);
+	if(!buf) return 0;
+
+	for(i=0; i<BUFSIZE; i++){
+		buf[i] = BUFSIZE-i;
+		printf("%d ", buf[i]);
+	}
+	printf("\n ");
 	//选择排序
 	//select_sort(arr, sizeof(arr)/sizeof(int));
 
@@ -256,6 +284,11 @@ int main(int argc, char ** argv){
 	
 	//逆序对
 	num = recursive_inversion_number_sum(arr, 0, sizeof(arr)/sizeof(int)-1);
-	
+
+	for(i=0; i<BUFSIZE; i++){
+		printf("%d ", buf[i]);
+	}
+	printf("\n ");
+	free(buf);
 	return 0;
 }
