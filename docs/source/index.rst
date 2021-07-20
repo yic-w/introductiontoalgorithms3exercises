@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ita3's documentation!
+算法导论第三版习题
 ================================
 
 .. toctree::
