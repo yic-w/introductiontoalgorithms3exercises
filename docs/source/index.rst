@@ -10,6 +10,13 @@
    :maxdepth: 2
    :caption: Contents:
 
+.. toctree::
+  :maxdepth: 1
+  :caption: 快速开始
+  :name: sec-chapter
+
+  chapter1/3.1-1
+
 
 
 Indices and tables
