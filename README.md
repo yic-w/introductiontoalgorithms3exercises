@@ -1,5 +1,5 @@
 # 算法导论（第三版）习题
-- [Docs](https://yic-w.github.io/ita3exercises.github.io/)
+- [Docs](https://introductiontoalgorithms3exercises.readthedocs.io/en/latest/index.html)
 # 第一章
 ## 1.1-1
 ### 排序
