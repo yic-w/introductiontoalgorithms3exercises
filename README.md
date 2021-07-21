@@ -438,3 +438,7 @@ w(g(n)):存在c,n1,对于所有n>n1，有0 <= cg(n) < f(n)
 ## 3.1-8
 Ω(g(n,m)) = {f(n,m):存在正常量c,n0,m0,使得对所有n>n0,或m>m0,有0 <= cg(n,m) <= f(n,m)}  
 θ(g(n,m)) = {f(n,m):存在正常量c1，c2,n0,m0,使得对所有n>n0,或m>m0,有0 <= c1g(n,m) <= f(n,m) <= c2g(n,m)}
+## 3.2-1
+
+## 3.2-2
+a^logb^c = a^(loga^c / loga^b) = (a^(loga^c))^(1/loga^b) = c^(1/loga^b) = c^(logb^a)
