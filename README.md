@@ -439,6 +439,11 @@ w(g(n)):存在c,n1,对于所有n>n1，有0 <= cg(n) < f(n)
 Ω(g(n,m)) = {f(n,m):存在正常量c,n0,m0,使得对所有n>n0,或m>m0,有0 <= cg(n,m) <= f(n,m)}  
 θ(g(n,m)) = {f(n,m):存在正常量c1，c2,n0,m0,使得对所有n>n0,或m>m0,有0 <= c1g(n,m) <= f(n,m) <= c2g(n,m)}
 ## 3.2-1
+f(n),g(n)单调递增，  
+那么有：对于m <= n,f(m) <= f(n), g(m) <= g(n),  
+合并可得：对于m <= n,f(m) + g(m) <= f(n) + g(n), f(g(m)) <= f(g(n))  
+也即对于m <= n,f(n) + g(n)，和f(g(n))也是单调递增的  
+若f(n)和g(n)都是非负的，那么对于m <= n,f(m) * g(m) <= f(n) * g(n)，也即f(n)g(n)也是单调递增的
 
 ## 3.2-2
 a^logb^c = a^(loga^c / loga^b) = (a^(loga^c))^(1/loga^b) = c^(1/loga^b) = c^(logb^a)
