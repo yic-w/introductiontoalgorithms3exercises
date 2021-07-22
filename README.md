@@ -451,4 +451,6 @@ a^logb^c = a^(loga^c / loga^b) = (a^(loga^c))^(1/loga^b) = c^(1/loga^b) = c^(log
 ![Image text]( https://img-blog.csdnimg.cn/2020102723070613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RvdHVzd2hm,size_16,color_FFFFFF,t_70)
 ## 3.2-5
 ![Image text]( https://private.codecogs.com/gif.latex?%5Clg%5Ctextup%7B*%7D%28%5Clg%7Bn%7D%29%20%3D%20%5Clg%5E*n%20-%201%20%3E%20%5Clg%28%5Clg%5Ctextup%7B*%7D%28n%29%29)
+## 3.2-6
+![Image text]( https://img-blog.csdnimg.cn/20201027232018176.png)
 
