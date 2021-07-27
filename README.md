@@ -456,4 +456,25 @@ a^logb^c = a^(loga^c / loga^b) = (a^(loga^c))^(1/loga^b) = c^(1/loga^b) = c^(log
 
 # 第四章
 ## 4.1-1
-返回数组中最大的负数。最底层左递归返回A[0]，最底层右递归返回A[1],跨中点的递归则返回A[0] + A[1]，因为数组元素都是负数，跨中点的两个负数相加必然小于左右递归的最大值，显然每层递归最终返回左递归和右递归中的最大值，最终函数返回数组中最大的负数。
+返回数组中最大的负数。  
+最底层左递归返回A[0]，最底层右递归返回A[1],跨中点的递归则返回A[0] + A[1]，因为数组元素都是负数，跨中点的两个负数相加必然小于左右递归的最大值，显然每层递归最终返回左递归和右递归中的最大值，最终函数返回数组中最大的负数。
+## 4.1-2
+```c
+int BRUTE_FORCE(A, low, high){
+	max = A[0]
+	max-left = low
+	max-right = low
+	for i = low to high
+		sum = A[i]
+		if sum > max
+			max = sum
+			max-left = i
+			max-right = i
+		for j = i+1 to high
+			sum += A[j]
+			if sum > max
+				max = sum
+				max-left = i
+				max-right = j
+}
+```
