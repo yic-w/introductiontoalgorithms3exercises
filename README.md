@@ -461,7 +461,7 @@ a^logb^c = a^(loga^c / loga^b) = (a^(loga^c))^(1/loga^b) = c^(1/loga^b) = c^(log
 ## 4.1-2
 ```c
  BRUTE_FORCE(A, low, high){
-	max = A[0]
+	max = A[low]
 	max-left = low
 	max-right = low
 	for i = low to high
