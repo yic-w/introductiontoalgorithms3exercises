@@ -480,3 +480,36 @@ a^logb^c = a^(loga^c / loga^b) = (a^(loga^c))^(1/loga^b) = c^(1/loga^b) = c^(log
 	return {max, max-left, max-right}
 }
 ```
+## 4.1-3
+### 暴力算法
+```c
+ int BRUTE_FORCE(int *arr, int low, int high, int *ret){
+	int max = arr[low];
+	int max_left = low;
+	int max_right = low;
+	int  i = 0, j = 0, sum = 0;
+	for(i = low; i <= high; i++){
+		sum = arr[i];
+		if (sum > max){
+			max = sum;
+			max_left = i;
+			max_right = i;
+		}
+		
+		for(j = i+1; j<= high; j++){
+			sum += arr[j];
+			if (sum > max){
+				max = sum;
+				max_left = i;
+				max_right = j;
+			}
+		}
+	}
+
+	ret[0] = max;
+	ret[1] = max_left;
+	ret[2] = max_right;
+	
+	return 0;
+}
+```
