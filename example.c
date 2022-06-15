@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-#define BUFSIZE		10000000
+#define BUFSIZE		100000000
 
 #define FUNC_TIME_SPEC(func) do{\
 	struct	timeval ts,te;\
